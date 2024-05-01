@@ -1,0 +1,197 @@
+/* GLOBAL */
+html,
+body {
+    background-color: bisque;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    list-style-type: none;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+/* LOGIN */
+main {
+    width: 100%;
+    margin: 15px;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    border: 2px solid tan;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: tan;
+}
+
+button {
+    background-color: tan;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+input {
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 60%;
+}
+
+#label-password {
+    margin-right: 9px;
+}
+
+nav {
+    display: flex;
+    position: sticky;
+    height: 5vh;
+    border-bottom: 2px solid tan;
+    margin-bottom: 20px;
+    background-color: tan;
+    padding: 0px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline-flex;
+}
+
+ul {
+    text-align: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+.panel {
+    position: relative;
+    border: 2px solid tan;
+    height: 40vh;
+    width: 100%;
+    max-width: 80%;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.submit-btn-group {
+    display: inline-flex;
+    position: relative;
+}
+
+.login-box {
+    position: relative;
+    width: 30%;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 2px solid tan;
+    border-radius: 15px;
+    padding: 20px;
+    height: 25vh;
+
+}
+
+
+.login-content {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+input:valid {
+    border: 2px solid block;
+}
+
+.submit-btn-group {
+    float: right;
+    clear: both;
+    margin-top: px;
+}
+
+@media screen and (max-width:680px) {
+    header {
+        width: 100%;
+    }
+
+    .panel {
+        width: 100%;
+    }
+
+    .offset-mid {
+        width: 100%;
+    }
+}
+
+
+/* HOME */
+
+.profile-box {
+   
+    width:100%;
+}
+
+.profile-box {
+    width:60%;
+    margin: 0 auto;
+    border: 2px solid tan;
+    border-radius: 5px;
+}
+
+.submit-btn-group {
+   margin-top:3px;
+}
+
+.submit-btn-group > input {
+    display:block;
+    position:relative;
+    padding:8px 8px 8px 8px;
+    right:0;
+}
+
+ .header {
+    
+ }
+
+.profile-form:has(label),.profile-form:has(input)  {
+    padding-left:5%;
+    margin:20px;
+    font-weight: 700;
+    margin:0 auto;
+}
+
+.profile-form:has(input) {
+    width:80%;
+    margin-bottom:10px;
+}
+
+#skip {
+    padding:5px;
+    
+}
+
+
+

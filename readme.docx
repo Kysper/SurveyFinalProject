@@ -1,0 +1,20 @@
+This project will be a survey project that will display some information on the user and then asks a few questions about computer hardware
+This information will be based on a non-biased gaming hardware relationship with more efficiency in tasks.
+
+To use this page unzip the folder (Right click on the folder and click Extract All or open with and select your desired zip manager)
+
+Steps to use the website
+
+- Double click on the index.html page.
+- Register an account with your name, age, general location, email, and a password
+- After successfully registering, you will be prompt to begin the survey, you may leave and return as you wish.
+- Once the survey questions have been completed the results will tally up to a percentage of most used hardware types.
+
+Altneratively you can go to (insert github link here to view online);
+
+This page was built using html, css, and javascript. It will use local storage to remember your results of each survey.
+An object model of the surveys will be built by instantiating new survey object per question leaving ease to add new survey questions
+
+The parts of the survey will be the background panel, header, input, validation, forward arrow and back arrow (to scroll through the questions).
+
+Classes will be added during creation and deconstruction of the questions to allow for new questions and css to be added to be built in place.

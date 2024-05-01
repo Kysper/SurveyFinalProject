@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Jump</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./validation.js" defer></script>
+</head>
+
+<body>
+    <nav class="nav-box">
+    </nav>
+    <ul>
+        <li>
+            <h4>We have helped 1,234 companies syphon information from their users last year.</h4>
+        </li>
+        <li>
+            <h4>We have obtained 2 yottabyte's of data from consumers in 2023.</h4>
+        </li>
+    </ul>
+    <div class="login-box">
+       
+        <form id="login-form" action="home.html" class="login-content" method="POST">
+            <h4 class="login-header">Please sign up to continue.</h4>
+            <label for="userName" id="label-username">User Name</label> 
+            <input type="text" id="username" name="userName" min-length="3" /><br />
+            <label for="pwd" id="label-password">Password</label>
+            <input id="password" type="password" min-length="8" />
+            <div class="submit-btn-group">
+                <input id="saveLogin" class="submit" type="submit"></button>
+                <input class="reset" type="reset"></button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

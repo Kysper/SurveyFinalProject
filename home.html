@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Jump</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./validation.js"></script>
+</head>
+
+<body>
+    <h3 id="header"></h3>
+    <div class="profile-box">
+      
+        <form class="profile-form" action="home.html" method="POST">
+            <h4 class="profile profile-header">Finish your profile if you like or skip for now.</h4>
+
+            <label class="profile" for="firstName" id="label-firstName">First Name</label>
+            <input class="profile" type="text" id="firstName" /><br />
+
+            <label class="profile" for="lastName" id="label-lastName">Last Name</label>
+            <input class="profile" type="text" id="lastName" />
+
+            <label class="profile" for="email" id="label-email">Email</label>
+            <input class="profile" id="email" type="email" />
+
+            <label class="profile" for="address" id="label-address">Address</label>
+            <input class="profile" id="address" type="text" />
+
+            <label class="profile" for="state" id="label-state">State</label>
+            <input class="profile" type="text" id="state" />
+
+            <label class="profile" for="zip" id="label-zip">ZIP</label>
+            <input class="profile" id="zip" type="text" />
+            <div class="submit-btn-group">
+                <input id="saveProfile" class="submit" type="submit" value="Save" />
+                <input class="reset" type="reset" />
+
+            </div>
+        </form>
+        <a href="index.html" id="skip"><button>Skip</button></a>
+    </div>
+
+</html>
