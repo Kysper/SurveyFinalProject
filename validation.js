@@ -6,11 +6,14 @@ let allowSubmission = false;
 
 document.addEventListener("input", function (event) {
    input = event.target;
+   /* Login */
+   // catch all for blank inputs that are required
+
    if (input.value == null) {
       input.style.borderColor = "red";
       document.getElementById("label-" + input.id).textContent = setMessages(input)[0];
       allowSubmission = false;
-   } else if ((input.value.length < 3 && input.id == "username") || (input.value.length < 8 && input.id == "password")) {
+   } else if (input.value.length < parseInt(input.getAttribute("min-length"))) {
       document.getElementById("label-" + input.id).textContent = setMessages(input)[1];
       input.style.borderColor = "red";
    } else {
@@ -18,16 +21,23 @@ document.addEventListener("input", function (event) {
       input.style.borderColor = "green";
       allowSubmission = true;
    }
+
+
+   /* Profile */
 });
 
-function setMessages(e) {
-   if (e.id == "password") {
-      return ["Password Cannot be left blank.", "Password Must be 8 characters or longer", "Password"];
-   }
 
-   if (e.id == "username") {
-      return ["User Name Cannot be left blank.", "User Name Must be 3 characters or longer", "User Name"];
-   }
+function setMessages(e) {
+   if (e.id == "password") return ["Password cannot be left blank.", "Password must be 8 characters or longer", "Password"];
+   if (e.id == "username") return ["User Name cannot be left blank.", "User name must be 3 characters or longer", "User Name"];
+
+   if (e.id == "firstName") return ["First name cannot be left blank.", "First name must be at least 3 characters or longer.", "First Name"];
+   if (e.id == "lastName") return [];
+   if (e.id == "email") return []
+   if (e.id == "address") return []
+   if (e.id == "state") return []
+   if (e.id == "zip") return []
+
 }
 
 
@@ -58,4 +68,11 @@ window.onload = function () {
          header.textContent = "Welcome " + JSON.parse(user).userName;
       }
    }
+}
+
+if (document.getElementById("saveProfile")) {
+   let saveProfile = document.getElementById("saveProfile");
+   saveProfile.addEventListener("click", function () {
+
+   })
 }

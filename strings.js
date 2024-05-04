@@ -12,7 +12,6 @@ let qArray = ["What type of gaming platform do you primarily use? (PC, console, 
 
 let selections = {
   s0: ["PC", "Console", "Mobile"],
-  s1: (index) => { s0[index] },
-  s2: ["every release of new hardware", "every year", "every 3 years", "every 5 years", "whenever something breaks"],
-  s3: ["Final Mouse","Corsair","Asus","Logitech","Razer","SteelSeries","other"],
+  s1: ["every release of new hardware", "every year", "every 3 years", "every 5 years", "whenever something breaks"],
+  s2: ["Final Mouse", "Corsair", "Asus", "Logitech", "Razer", "SteelSeries", "other"]
 };
