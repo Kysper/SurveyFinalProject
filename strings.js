@@ -1,6 +1,6 @@
 
 let qArray = ["What type of gaming platform do you primarily use? (PC, console, mobile)?",
-  "What are some games you enjoy on the %s",
+  "What are some games you enjoy on it?",
   "How often do you upgrade your gaming hardware (e.g., graphics card, processor)?",
   "Which brand of gaming mouse do you prefer?",
   "What factors are most important to you when choosing a gaming keyboard?",
