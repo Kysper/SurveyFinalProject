@@ -12,6 +12,20 @@ let qArray = ["What type of gaming platform do you primarily use? (PC, console, 
 
 let selections = {
   s0: ["PC", "Console", "Mobile"],
-  s1: ["every release of new hardware", "every year", "every 3 years", "every 5 years", "whenever something breaks"],
-  s2: ["Final Mouse", "Corsair", "Asus", "Logitech", "Razer", "SteelSeries", "other"]
+  s1: ["Every new release", "Every year", "Every 3 years", "Every 5 years", "Whenever something breaks"],
+  s2: ["Final Mouse", "Corsair", "Asus", "Logitech", "Razer", "SteelSeries", "Other"],
+  s3: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 };
+
+
+let userData = {
+  username: document.getElementById("zip").value,
+  pwd: document.getElementById("zip").value,
+
+  firstName: document.getElementById("firstName").value,
+  lastName: document.getElementById("lastName").value,
+  email: document.getElementById("email").value,
+  address: document.getElementById("address").value,
+  state: document.getElementById("state").value,
+  zip: document.getElementById("zip").value,
+}

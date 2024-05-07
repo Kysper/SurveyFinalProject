@@ -206,3 +206,13 @@ input:valid {
     padding: 5px;
 
 }
+
+/* INDEX */
+#dd-container{
+    text-align: center;
+}
+
+#dd-container, select, option{
+    padding:2px 5px 2px 5px;
+    border-radius: 5px;
+}

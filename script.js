@@ -9,9 +9,9 @@ function startSurvey() {
     for (let i = 0; i < qArray.length; i++) {
         questionList.push(generateQuestion(i));
     }
-
     mainElement.appendChild(questionList[0]);
 }
+
 
 document.addEventListener("click", function (e) {
     if (e.target.id == "nextBtn") {
