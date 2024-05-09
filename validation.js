@@ -6,7 +6,7 @@ let allowSubmission = false;
 
 const pattern = new RegExp("/^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/", "g");
 
-document.addEventListener("keyup", function (event) {
+document.addEventListener("input", function (event) {
    input = event.target;
    input.classList.remove("invalid");
    /* Login */
@@ -46,7 +46,7 @@ document.addEventListener("keyup", function (event) {
    }
 
    //Zipcode
-   if(input.id == "zip" && input.value.length != 5){
+   if (input.id == "zip" && input.value.length != 5) {
       document.getElementById("label-" + input.id).textContent = setMessages(input)[1];
       input.style.borderColor = "red";
       input.classList.add("invalid");
@@ -64,17 +64,12 @@ document.addEventListener("keyup", function (event) {
 
 document.addEventListener("submit", function (event) {
    event.preventDefault();
+
    if (allowSubmission) {
       let inputList = event.target.querySelectorAll('input')
-      let data = {
-         userName: inputList[0].value,
-         password: inputList[1].value
-      };
-      localStorage.setItem("user", JSON.stringify(data));
-      window.location.href = "home.html"
+
    } else {
       window.location.href = "login.html"
-      msg = "Account has not been created";
    }
 })
 

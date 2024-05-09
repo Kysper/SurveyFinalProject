@@ -27,33 +27,7 @@ let selections = {
   s3: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 };
 
-//Saved
-let userData = {
-  username: document.getElementById("username") ? document.getElementById("username").value : "",
-  pwd: document.getElementById("password") ? document.getElementById("password").value : "",
-
-  firstName: document.getElementById("firstName") ? document.getElementById("firstName").value : "",
-  lastName: document.getElementById("lastName") ? document.getElementById("lastName").value : "",
-  email: document.getElementById("email") ? document.getElementById("email").value : "",
-  address: document.getElementById("address") ? document.getElementById("address").value : "",
-  state: document.getElementById("state") ? document.getElementById("state").value : "",
-  zip: document.getElementById("zip") ? document.getElementById("zip").value : "",
-
-  q1: document.getElementById("input-select-0") ? document.getElementById("input-select-0").value : "",
-  q2: document.getElementById("input-select-1") ? document.getElementById("input-select-1").value : "",
-  q3: document.getElementById("input-select-2") ? document.getElementById("input-select-2").value : "",
-  q4: document.getElementById("input-select-3") ? document.getElementById("input-select-3").value : "",
-  q5: document.getElementById("input-select-4") ? document.getElementById("input-select-4").value : "",
-  q6: document.getElementById("input-select-5") ? document.getElementById("input-select-5").value : "",
-  q7: document.getElementById("input-select-6") ? document.getElementById("input-select-6").value : "",
-  q8: document.getElementById("input-select-7") ? document.getElementById("input-select-7").value : "",
-  q9: document.getElementById("input-select-8") ? document.getElementById("input-select-8").value : "",
-  q10: document.getElementById("input-select-9") ? document.getElementById("input-select-9").value : "",
-
-  subQ1: document.getElementById("sub-q-1") ? document.getElementById("sub-q-1").value : "",
-  subQ2: document.getElementById("sub-q-2") ? document.getElementById("sub-q-2").value : "",
-
-}
+let data = {}
 
 //String validations
 function setMessages(e) {

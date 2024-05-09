@@ -38,12 +38,6 @@ document.addEventListener("click", function (e) {
             mainElement.removeChild(prevBtn.parentElement);
             mainElement.appendChild(prevQuestion);
         }
-    } else if (e.target.id == "submitBtn") {
-        let submitBtn = document.getElementById(e.target.id);
-        redirectToCompletedPage = submitSurvey(submitBtn.className.split("-")[1], questionList);
-        if (redirectToCompletedPage != null) {
-            window.location.href = redirectToCompletedPage;
-        }
     } else {
         // Do nothing no other target accepted
     }
@@ -67,17 +61,17 @@ document.addEventListener("change", function (event) {
 
 if (document.getElementById("surveyList")) {
     window.onload = function () {
-        let user = getCookie("user");
-        if (localStorage.getItem(user) != null) {
-            let data = JSON.parse(localStorage.getItem(user));
+        if (localStorage.getItem("user") != null) {
+
+            let users = JSON.parse(localStorage.getItem("user"));
+            let profiles = JSON.parse(localStorage.getItem("profiles"));
+            let survey = JSON.parse(localStorage.getItem("survey"));
+            
             let p = document.createElement("p");
             let h4 = document.createElement("h4");
-            console.log(data);
-            let txtNode = document.createTextNode(`${data.username}`);
-            h4.appendChild(txtNode);
-            p.appendChild(h4);
+            let txtNode = document.createTextNode(`${users.userName}`);
+      
             let surveyList = document.getElementById("surveyList");
-            surveyList.appendChild(p);
         };
     }
 }

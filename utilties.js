@@ -103,24 +103,45 @@ function jumpToNextQuestion(index, questionList) {
     }
 }
 
-//Run after the submit button has been pressed
-function submitSurvey(index, questionList) {
-    if (parseInt(index + 1) >= questionList.length) {
-        let num = generateBasicUniqueNumber();
+function saveLogin(inputList, key) {
+    let listArr = JSON.parse(localStorage.key(""));
+    //Checks credentials for validation and moving forward saving credentials in local storage
+    if (listArr == null) {
+        
+        if (key == "user") {
+            let users = JSON.parse(localStorage.key(key));
 
-        if(localStorage.getItem("user-"+ num) == null){
-            setCookie("user", "user-" + num, 30);
-            localStorage.setItem("user-"+ num, JSON.stringify(userData));
-        };
-        return "complete.html"
+            data.userName = inputList[0].value;
+            data.password = inputList[1].value;
+
+            users.push(data);
+            localStorage.setItem(key, users);
+
+            window.location.href = "home.html";
+        } else if (key == "profile") {
+
+            profiles = localStorage.getItem(key);
+
+            data.firstName = inputList[0].value;
+            data.lastName = inputList[1].value;
+            data.email = inputList[2].value;
+            data.address = inputList[3].value;
+            data.state = inputList[4].value;
+            data.zip = inputList[5].value;
+
+            profiles.push(data)
+            localStorage.setItem(key, profiles);
+
+            window.location.href = "index.html";
+        } else if (key == "survey") {
+
+            questions = localStorage.getItem(key);
+
+            localStorage.setItem(key, questions);
+            window.location.href = "complete.html";
+        } else {
+
+        }
+
     }
-}
-
-//Not truely random but enough for new user additions
-function generateBasicUniqueNumber(){
-    let id = Math.floor(Math.random() * 100);
-    if (localStorage.getItem("user")) {
-        id = Math.floor(Math.random() * id);
-    };
-    return id;
 }
