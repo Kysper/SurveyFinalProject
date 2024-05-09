@@ -38,39 +38,29 @@ document.addEventListener("keyup", function (event) {
    }
 
    //Email
-   if (input.id == "email" && input.value.contains("@") && input.value.contains(".")) {
+   if (input.id == "email" && !(input.value.includes("@") && input.value.includes("."))) {
       document.getElementById("label-" + input.id).textContent = setMessages(input)[1];
       input.style.borderColor = "red";
       input.classList.add("invalid");
       return
    }
 
+   //Zipcode
+   if(input.id == "zip" && input.value.length != 5){
+      document.getElementById("label-" + input.id).textContent = setMessages(input)[1];
+      input.style.borderColor = "red";
+      input.classList.add("invalid");
+   }
+
    //If all is passed then success!
    if (!input.classList.contains("invalid")) {
-      document.getElementById("label-" + input.id).textContent = setMessages(input).length[setMessages(input).length];
+      document.getElementById("label-" + input.id).textContent = setMessages(input)[setMessages(input).length - 1]
       input.style.borderColor = "green";
       allowSubmission = true;
       return
    }
    /* Profile */
 });
-
-
-function setMessages(e) {
-   if (e.id == "password") return ["Password cannot be left blank.",
-      "Password must be 8 characters or longer",
-      "Password must have a special character.",
-      "Password must have a number.", "Password must have an upper case character.", "Password"];
-   if (e.id == "username") return ["User name cannot be left blank.", "User name must be 3 characters or longer", "User Name"];
-   if (e.id == "firstName") return ["First name cannot be left blank.", "First name must be at least 3 characters or longer.", "First Name"];
-   if (e.id == "lastName") return ["Last name cannot be left blank.", "Last name must be at least 3 characters or longer.", "Last Name"];
-   if (e.id == "email") return ["Email must not be left blank", "Email must be valid (@.com)", "Email"];
-   if (e.id == "address") return ["Address must not be left blank", "Add number and street", "Address"];
-   if (e.id == "state") return ["State must not be left blank", "Can use full name or abbrivated name (KS)", "State"];
-   if (e.id == "zip") return ["Zip must not be invalid", "5 numbers needed", "Zip"];
-
-}
-
 
 document.addEventListener("submit", function (event) {
    event.preventDefault();
@@ -103,6 +93,6 @@ window.onload = function () {
 if (document.getElementById("saveProfile")) {
    let saveProfile = document.getElementById("saveProfile");
    saveProfile.addEventListener("click", function () {
-
+      window.location.href = "index.html";
    })
 }

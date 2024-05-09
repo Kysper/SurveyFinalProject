@@ -1,3 +1,7 @@
+
+let count = 0;
+
+//Creates elements based on relative tags, names classes and if it has a text value
 function createElement(tag, attrNames, attrValues, className, needsTextNode) {
     let elem = document.createElement(tag);
 
@@ -12,43 +16,61 @@ function createElement(tag, attrNames, attrValues, className, needsTextNode) {
 }
 
 
-function generateQuestion(index) {
+//Generates question
+function generateQuestion(index, subQ) {
+    let panel, question, prev, input, select, next, submit;
 
-    let panel = createElement("div", [], [], "panel-" + index, false);
-    let question = createElement("h4", ["text"], [qArray[index]], "q-" + index, true);
-    let prev = createElement("button", ["type", "id", "text"], ["button", "prevBtn", "Prev"], "prevBtn-" + index, true);
-    let input = createElement("input", ["name"], ["input-data"], "input-" + index, false);
-    let select = createElement("select", ["id"], ["input-select"], "input-" + index, false)
-    let next = createElement("button", ["type", "id", "text"], ["button", "nextBtn", "Next"], "nextBtn-" + index, true);
-    let submit = createElement("button", ["type", "id", "text"], ["submit", "submitBtn", "Submit"], "submitBtn-" + index, true);
 
-    panel.appendChild(question);
+    panel = createElement("div", ["id"], ["panel-" + index], "panel-" + index, false);
+    question = createElement("h4", ["text"], [qArray[index]], "q-" + index, true);
+    prev = createElement("button", ["type", "id", "text"], ["button", "prevBtn", "Prev"], "prevBtn-" + index, true);
+    input = createElement("input", ["id"], ["input-select-" + index], "input-" + index, false);
+    select = createElement("select", ["id"], ["input-select-" + index], "input-" + index, false)
+    next = createElement("button", ["type", "id", "text"], ["button", "nextBtn", "Next"], "nextBtn-" + index, true);
+    submit = createElement("button", ["type", "id", "text"], ["submit", "submitBtn", "Submit"], "submitBtn-" + index, true);
 
-    determineInputType(index);
+    if (subQ) {
+        let subQuestion = createElement("h4", ["id", "text"], ["sub-q-" + index, qArraySub[index]], "q-sub-" + index, true);
+        subQuestion.appendChild(input);
+        let btns = document.getElementById("panel-" + index).getElementsByTagName("button")[0]
+        btns.insertAdjacentElement("beforebegin", subQuestion)
+    } else {
 
-    panel.appendChild(prev);
-    panel.appendChild(next);
-    panel.appendChild(submit);
+
+        panel.appendChild(question);
+
+        determineInputType(index, panel, select, input);
+
+        panel.appendChild(prev);
+        panel.appendChild(next);
+        panel.appendChild(submit);
+    }
+
+
+
+
 
     return panel;
 }
 
-function determineInputType(index) {
+
+//Determines if the questions are input, or a dropdown
+function determineInputType(index, panel, select, input) {
     switch (index) {
         case 0:
-            panel.appendChild(generateReponses(select, index, 0));
+            panel.appendChild(createDropDowns(select, index, 0));
             break;
 
         case 2:
-            panel.appendChild(generateReponses(select, index, 1));
+            panel.appendChild(createDropDowns(select, index, 1));
             break;
 
         case 3:
-            panel.appendChild(generateReponses(select, index, 2));
+            panel.appendChild(createDropDowns(select, index, 2));
             break;
 
         case 6:
-            panel.appendChild(generateReponses(select, index, 3));
+            panel.appendChild(createDropDowns(select, index, 3));
             break;
 
         default:
@@ -57,35 +79,48 @@ function determineInputType(index) {
     }
 }
 
-function generateReponses(parent, index, qValues) {
+//Creates options and values to append to select html tag
+function createDropDowns(parent, index, qValues) {
     let selectionArr = Object.values(selections);
-
-    console.log(selectionArr[qValues].length)
-
     for (let i = 0; i < selectionArr[qValues].length; i++) {
         let option = createElement("option", ["id", "text"], ["input-option", selectionArr[qValues][i]], "input-" + index, true)
         parent.appendChild(option);
     }
 
-
-
     return parent;
 }
 
+//Runs after the previous button has been pressed
 function jumpToPrevQuestion(index, questionList) {
     if ((parseInt(index) - 1) >= 0) {
         return questionList[parseInt(index) - 1];
     }
 }
+//Runs after the next button has been pressed
 function jumpToNextQuestion(index, questionList) {
     if ((parseInt(index) + 1) < questionList.length) {
-        userData
         return questionList[parseInt(index) + 1];
     }
 }
+
+//Run after the submit button has been pressed
 function submitSurvey(index, questionList) {
     if (parseInt(index + 1) >= questionList.length) {
-        let list = document.getElementById("surveyList");
-        localStorage.setItem();
+        let num = generateBasicUniqueNumber();
+
+        if(localStorage.getItem("user-"+ num) == null){
+            setCookie("user", "user-" + num, 30);
+            localStorage.setItem("user-"+ num, JSON.stringify(userData));
+        };
+        return "complete.html"
     }
+}
+
+//Not truely random but enough for new user additions
+function generateBasicUniqueNumber(){
+    let id = Math.floor(Math.random() * 100);
+    if (localStorage.getItem("user")) {
+        id = Math.floor(Math.random() * id);
+    };
+    return id;
 }

@@ -216,3 +216,16 @@ input:valid {
     padding:2px 5px 2px 5px;
     border-radius: 5px;
 }
+
+#list-header {
+  text-align: center;
+}
+
+#surveyList{
+    border:2px solid tan;
+    width:80%;
+    margin:0 auto;
+    height:30vh;
+    border-radius:10px;
+    box-shadow: 5px 5px 10px 6px tan;
+}
