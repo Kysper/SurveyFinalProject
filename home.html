@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Jump</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="validation.js"></script>
-    <script defer src="strings.js"></script>
-    <script src="cookie.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="strings.js" defer></script>
+    <script src="utilties.js" defer></script>
+    <script src="validation.js" defer></script>
 </head>
 
 <body>
     <nav class="nav-box"></nav>
     <h3 id="header"></h3>
     <div class="profile-box">
-      
-        <form class="profile-form" action="home.html" method="POST">
+
+        <form class="profile-form" action="index.html" id="profile-form" method="POST">
             <h4 class="profile profile-header">Finish your profile if you like or skip for now.</h4>
 
             <label class="profile" for="firstName" id="label-firstName">First Name</label>

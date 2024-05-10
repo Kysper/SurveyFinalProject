@@ -1,5 +1,6 @@
 
 let count = 0;
+let surveyInputs = []
 
 //Creates elements based on relative tags, names classes and if it has a text value
 function createElement(tag, attrNames, attrValues, className, needsTextNode) {
@@ -21,7 +22,7 @@ function generateQuestion(index, subQ) {
     let panel, question, prev, input, select, next, submit;
 
 
-    panel = createElement("div", ["id"], ["panel-" + index], "panel-" + index, false);
+    panel = createElement("form", ["id", "method", "action"], ["panel-" + index, "GET", "#"], "panel-" + index, false);
     question = createElement("h4", ["text"], [qArray[index]], "q-" + index, true);
     prev = createElement("button", ["type", "id", "text"], ["button", "prevBtn", "Prev"], "prevBtn-" + index, true);
     input = createElement("input", ["id"], ["input-select-" + index], "input-" + index, false);
@@ -41,9 +42,20 @@ function generateQuestion(index, subQ) {
 
         determineInputType(index, panel, select, input);
 
-        panel.appendChild(prev);
-        panel.appendChild(next);
-        panel.appendChild(submit);
+
+        //Clean up prev next to not show at the first and end of the survey
+        if (index != 0)
+            panel.appendChild(prev);
+
+        if (index != qArray.length - 1) {
+            panel.appendChild(next);
+        }
+
+        //Shows only at the end of the survey
+        if (index == qArray.length - 1) {
+            panel.appendChild(submit);
+        }
+
     }
 
 
@@ -99,49 +111,53 @@ function jumpToPrevQuestion(index, questionList) {
 //Runs after the next button has been pressed
 function jumpToNextQuestion(index, questionList) {
     if ((parseInt(index) + 1) < questionList.length) {
+        let select = document.getElementById("input-select-" + index);
+        surveyInputs.push(select);
         return questionList[parseInt(index) + 1];
     }
 }
 
-function saveLogin(inputList, key) {
-    let listArr = JSON.parse(localStorage.key(""));
-    //Checks credentials for validation and moving forward saving credentials in local storage
-    if (listArr == null) {
-        
-        if (key == "user") {
-            let users = JSON.parse(localStorage.key(key));
+function saveData(inputList, key) {
 
-            data.userName = inputList[0].value;
-            data.password = inputList[1].value;
+    if (key == "users") {
+        let users = localStorage.key(key) ? JSON.parse(localStorage.getItem(key)) : [];;
 
-            users.push(data);
-            localStorage.setItem(key, users);
+        data.userName = inputList[0].value;
+        data.password = inputList[1].value;
 
-            window.location.href = "home.html";
-        } else if (key == "profile") {
+        users.push(data);
+        localStorage.setItem(key, JSON.stringify(users));
 
-            profiles = localStorage.getItem(key);
+    } else if (key == "profiles") {
 
-            data.firstName = inputList[0].value;
-            data.lastName = inputList[1].value;
-            data.email = inputList[2].value;
-            data.address = inputList[3].value;
-            data.state = inputList[4].value;
-            data.zip = inputList[5].value;
+        let profiles = localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
 
-            profiles.push(data)
-            localStorage.setItem(key, profiles);
+        data.firstName = inputList[0].value;
+        data.lastName = inputList[1].value;
+        data.email = inputList[2].value;
+        data.address = inputList[3].value;
+        data.state = inputList[4].value;
+        data.zip = inputList[5].value;
 
-            window.location.href = "index.html";
-        } else if (key == "survey") {
+        profiles.push(data)
+        localStorage.setItem(key, JSON.stringify(profiles));
 
-            questions = localStorage.getItem(key);
+    } else if (key == "surveys") {
 
-            localStorage.setItem(key, questions);
-            window.location.href = "complete.html";
-        } else {
+        let surveys = localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
 
-        }
+        data.q1 = inputList[0].value;
+        data.q2 = inputList[1].value;
+        data.q3 = inputList[2].value;
+        data.q4 = inputList[3].value;
+        data.q5 = inputList[4].value;
+        data.q6 = inputList[5].value;
+        data.q7 = inputList[6].value;
+        data.q8 = inputList[7].value;
+        data.q9 = inputList[8].value;
+
+        surveys.push(data);
+        localStorage.setItem(key, JSON.stringify(surveys));
 
     }
 }

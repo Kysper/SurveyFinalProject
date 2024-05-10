@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Jump</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./validation.js" defer></script>
-    <script src="./utilties.js" defer></script>
-    <script src="./strings.js" defer></script>
-    <script src="./script.js" defer></script>
-    <script src="cookie.js" defer></script>
+    <script src="validation.js" defer></script>
+    <script src="utilties.js" defer></script>
+    <script src="strings.js" defer></script>
+    <script src="script.js" defer></script>
+
 </head>
 
 <body>
@@ -25,12 +25,12 @@
     </ul>
     <div class="login-box">
         <h5 id="msg"></h5>
-        <form id="login-form" action="home.html" class="login-content" method="POST">
+        <form id="login-form" action="/home.html" class="login-content" method="POST">
             <h4 class="login-header">Please sign up to continue.</h4>
             <label for="userName" id="label-username">User Name</label>
             <input type="text" id="username" name="userName" min-length="3" /><br />
             <label for="pwd" id="label-password">Password</label>
-            <input id="password" type="password" min-length="8" />
+            <input id="password" type="password" autocomplete="false" min-length="8" />
             <div class="submit-btn-group">
                 <input id="saveLogin" class="submit" type="submit"></button>
                 <input class="reset" type="reset"></button>

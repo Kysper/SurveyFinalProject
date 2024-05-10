@@ -62,32 +62,12 @@ document.addEventListener("input", function (event) {
    /* Profile */
 });
 
-document.addEventListener("submit", function (event) {
-   event.preventDefault();
-
-   if (allowSubmission) {
-      let inputList = event.target.querySelectorAll('input')
-
-   } else {
-      window.location.href = "login.html"
-   }
-})
 
 window.onload = function () {
-   let user = localStorage.getItem("user");
-   if (user == null) {
-      window.location.href = "login.html";
-   } else {
-      if (document.getElementById("header")) {
-         let header = document.getElementById("header");
-         header.textContent = "Welcome " + JSON.parse(user).userName;
-      }
-   }
-}
 
-if (document.getElementById("saveProfile")) {
-   let saveProfile = document.getElementById("saveProfile");
-   saveProfile.addEventListener("click", function () {
-      window.location.href = "index.html";
-   })
+   if (document.getElementById("header")) {
+      user = JSON.parse(localStorage.getItem("users"));
+      let header = document.getElementById("header");
+      header.textContent = "Welcome " + user[0].userName;
+   }
 }

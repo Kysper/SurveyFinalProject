@@ -61,19 +61,65 @@ document.addEventListener("change", function (event) {
 
 if (document.getElementById("surveyList")) {
     window.onload = function () {
-        if (localStorage.getItem("user") != null) {
+        if (localStorage.getItem("users") != null) {
 
-            let users = JSON.parse(localStorage.getItem("user"));
-            let profiles = JSON.parse(localStorage.getItem("profiles"));
-            let survey = JSON.parse(localStorage.getItem("survey"));
-            
-            let p = document.createElement("p");
-            let h4 = document.createElement("h4");
-            let txtNode = document.createTextNode(`${users.userName}`);
-      
+
+
             let surveyList = document.getElementById("surveyList");
+            let users = JSON.parse(localStorage.getItem("users"));
+            let profiles = JSON.parse(localStorage.getItem("profiles"));
+            let surveys = JSON.parse(localStorage.getItem("surveys"));
+            console.log(surveys)
+
+            for (let values of Object.values(surveys[0])) {
+                console.log(values)
+                let h4 = document.createElement("div");
+                let txtNode = document.createTextNode(values);
+                h4.appendChild(txtNode);
+    
+                surveyList.appendChild(h4);
+            }
+
         };
     }
 }
+
+document.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (allowSubmission || event.target.id.includes("panel")) {
+        let inputList = event.target.querySelectorAll('input')
+
+        //Saves data from submit and redirects to next page
+        if (event.target.id == "login-form") {
+            if (userHasAccount(inputList, "users")) {
+                window.location.replace("home.html");
+            } else {
+                saveData(inputList, "users");
+                window.location.replace("home.html");
+            }
+
+        } else if (event.target.id == "profile-form") {
+            if (userHasAccount(inputList, "users")) {
+                window.location.replace("index.html");
+            } else {
+                saveData(inputList, "profiles");
+                window.location.replace("index.html")
+            }
+
+        } else {
+            saveData(surveyInputs, "surveys");
+            window.location.replace("complete.html");
+        }
+
+    }
+
+    function userHasAccount(inputList, key) {
+        let users = JSON.parse(localStorage.getItem(key));
+        return users != null && users.includes(inputList[0].value);
+    }
+})
+
+
 
 
