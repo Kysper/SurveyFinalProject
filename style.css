@@ -6,6 +6,7 @@ body {
     width: 100%;
     padding: 0px;
     margin: 0px;
+    min-width: 400px;
 }
 
 a {
@@ -30,12 +31,14 @@ main[class^="panel-"],
 [class*="input-"] {
     width: 90%;
     margin: 0 auto;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
+
 [class^="input-"],
 [class*="input-"] {
-    width:30%;
+    width: 30%;
 }
+
 header {
     text-align: center;
     border: 2px solid tan;
@@ -81,7 +84,7 @@ nav ul {
     display: inline-flex;
 }
 
-ul {
+#desc {
     text-align: center;
     list-style: none;
 }
@@ -93,6 +96,8 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
 }
+
+
 
 .panel {
     position: relative;
@@ -143,6 +148,8 @@ input:valid {
     clear: both;
     margin-top: px;
 }
+
+
 
 @media screen and (max-width:680px) {
     header {
@@ -208,24 +215,75 @@ input:valid {
 }
 
 /* INDEX */
-#dd-container{
+#dd-container {
     text-align: center;
 }
 
-#dd-container, select, option{
-    padding:2px 5px 2px 5px;
+#dd-container,
+select,
+option {
+    padding: 2px 5px 2px 5px;
     border-radius: 5px;
 }
 
 #list-header {
-  text-align: center;
+    text-align: center;
 }
 
-#surveyList{
-    border:2px solid tan;
-    width:80%;
-    margin:0 auto;
-    height:30vh;
-    border-radius:10px;
+
+
+/* COMPLETE */
+#surveyList {
+    border: 2px solid tan;
+    width: 60%;
+    margin: 0 auto;
+    height: 30vh;
+    border-radius: 10px;
     box-shadow: 5px 5px 10px 6px tan;
+    height: fit-content;
+}
+
+#table-survey-list button {
+    text-align: left;
+    width: 98%;
+    padding:6px auto auto 6px;
+}
+
+#table-survey-list {
+    width:100%;
+    margin: 10px;
+}
+
+#details {
+    display: none;
+}
+
+#details.active {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#details,
+#profile ul,
+#survey ul {
+    list-style-type: none;
+}
+
+#profile {
+    width: 50%;
+    border: 2px solid tan;
+    border-radius: 10px;
+    margin-right: 10px
+}
+
+#survey {
+    width: 50%;
+    border: 2px solid tan;
+    border-radius: 10px;
+}
+
+.list-item{
+    padding:5px;
 }

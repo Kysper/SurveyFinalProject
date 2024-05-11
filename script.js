@@ -59,30 +59,80 @@ document.addEventListener("change", function (event) {
     }
 })
 
+//Lists survey names
 if (document.getElementById("surveyList")) {
     window.onload = function () {
         if (localStorage.getItem("users") != null) {
 
-
-
-            let surveyList = document.getElementById("surveyList");
-            let users = JSON.parse(localStorage.getItem("users"));
-            let profiles = JSON.parse(localStorage.getItem("profiles"));
             let surveys = JSON.parse(localStorage.getItem("surveys"));
-            console.log(surveys)
+            let count = 0;
+            let table = document.getElementById("table-survey-list");
 
-            for (let values of Object.values(surveys[0])) {
-                console.log(values)
-                let h4 = document.createElement("div");
-                let txtNode = document.createTextNode(values);
-                h4.appendChild(txtNode);
-    
-                surveyList.appendChild(h4);
+            for (let values of Object.values(surveys)) {
+
+                let tr = document.createElement("tr");
+                let btn = document.createElement("button");
+                let td = document.createElement("td");
+                td.appendChild(btn);
+
+                let txtNode = document.createTextNode(Object.values(values)[0]);
+
+                btn.id = "row-" + count;
+                btn.classList.add("btn")
+                btn.type = "button";
+
+                btn.appendChild(txtNode)
+                tr.appendChild(td);
+                table.appendChild(tr);
+                count++;
+            }
+        };
+
+    }
+
+    document.addEventListener("click", function (event) {
+
+        let detailsDiv = document.getElementById("details")
+        if (event.target.id.includes("row") && !detailsDiv.classList.contains("active")) {
+            detailsDiv.classList.add("active");
+        } else if (event.target.id.includes("row") && detailsDiv.classList.contains("active")) {
+            detailsDiv.classList.remove("active");
+        }
+
+        let profiles = JSON.parse(localStorage.getItem("profiles"));
+        let surveys = JSON.parse(localStorage.getItem("surveys"));
+
+        let profileItems = document.getElementById("profile").getElementsByTagName("span")
+        let surveyItems = document.getElementById("survey").getElementsByTagName("span")
+
+        if (event.target.id != null && event.target.id.includes("row")) {
+            let index = parseInt(event.target.id.split("-")[1]);
+
+            //Checks that there is data is storage
+            if (surveys.length > 0) {
+
+                //Iterates through list of surveys and adds data for that survey
+                let iterateSurveyItems = 0;
+                for (let values of Object.values(surveys[index])) {
+                    surveyItems[iterateSurveyItems].textContent = values;
+                    iterateSurveyItems++;
+                }
             }
 
-        };
-    }
+            if (profiles.length > 0 && profiles[index] != null) {
+
+                let iterateProfileItems = 0;
+                for (let values of Object.values(profiles[index])) {
+                    profileItems[iterateProfileItems].textContent = values;
+                    iterateProfileItems++;
+                }
+            }
+        }
+    })
 }
+
+
+
 
 document.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -113,7 +163,7 @@ document.addEventListener("submit", function (event) {
         }
 
     }
-
+//Checks that user has an account before moving forward
     function userHasAccount(inputList, key) {
         let users = JSON.parse(localStorage.getItem(key));
         return users != null && users.includes(inputList[0].value);

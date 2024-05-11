@@ -18,3 +18,12 @@ An object model of the surveys will be built by instantiating new survey object 
 The parts of the survey will be the background panel, header, input, validation, forward arrow and back arrow (to scroll through the questions).
 
 Classes will be added during creation and deconstruction of the questions to allow for new questions and css to be added to be built in place.
+
+* TESTING * 
+
+Testing involved in using the developer tools to walk through the sources and iterate changes until the desired effect was achieved.
+console.logs() methods were used to see value changes and see what values were being passed around.
+Created fake data to pass through functions and ensure their logic was correct in my intial hypothesis.
+
+all commits and code changes are listed here
+https://github.com/Kysper/SurveyFinalProject

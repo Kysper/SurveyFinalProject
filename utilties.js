@@ -143,9 +143,10 @@ function saveData(inputList, key) {
         localStorage.setItem(key, JSON.stringify(profiles));
 
     } else if (key == "surveys") {
-
+        let surveyName = document.getElementById("surveyName").textContent;
         let surveys = localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
-
+        console.log(surveyName)
+        data.surveyName = surveyName;
         data.q1 = inputList[0].value;
         data.q2 = inputList[1].value;
         data.q3 = inputList[2].value;
