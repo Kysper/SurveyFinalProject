@@ -151,10 +151,10 @@ document.addEventListener("submit", function (event) {
 
         } else if (event.target.id == "profile-form") {
             if (userHasAccount(inputList, "users")) {
-                window.location.replace("index.html");
+                window.location.replace("survey.html");
             } else {
                 saveData(inputList, "profiles");
-                window.location.replace("index.html")
+                window.location.replace("survey.html")
             }
 
         } else {

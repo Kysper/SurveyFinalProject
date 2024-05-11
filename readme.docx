@@ -5,12 +5,11 @@ To use this page unzip the folder (Right click on the folder and click Extract A
 
 Steps to use the website
 
-- Double click on the index.html page.
-- Register an account with your name, age, general location, email, and a password
-- After successfully registering, you will be prompt to begin the survey, you may leave and return as you wish.
-- Once the survey questions have been completed the results will tally up to a percentage of most used hardware types.
+- Double click on the login.html page.
+- Register an account with your username and a password
+- After successfully registering, you can create a profile or skip to be prompt to begin the survey.
 
-Altneratively you can go to (insert github link here to view online);
+Altneratively you can go to (https://kysper.github.io/SurveyFinalProject/);
 
 This page was built using html, css, and javascript. It will use local storage to remember your results of each survey.
 An object model of the surveys will be built by instantiating new survey object per question leaving ease to add new survey questions
@@ -26,4 +25,9 @@ console.logs() methods were used to see value changes and see what values were b
 Created fake data to pass through functions and ensure their logic was correct in my intial hypothesis.
 
 all commits and code changes are listed here
+
 https://github.com/Kysper/SurveyFinalProject
+
+* MILESTONES *
+Working to build out a create survey system in which you can create and deploy a survey yourself.
+Have users be paid for completing the surveys after accepting the submission.
